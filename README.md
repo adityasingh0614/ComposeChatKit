@@ -1,85 +1,66 @@
-# Simple Chat with Jetpack Compose and Firebase
+# ComposeChatKit
 
-<p align="center">
-  <img src="images/app-demo.gif" width="320" height="691" />
-  <img src="images/validation-demo.gif" width="320" height="691" />
-</p>
+**Android Real-Time Chat App with Modern Architecture**
 
-# About the project
+---
 
-When this project was [initially created](https://github.com/jsericksk/Simple-Chat/tree/old-version), the main objective was to improve my knowledge of Firebase and Jetpack Compose, in addition to creating a chat app with several different Firebase tools. However, in the recreation, the goal was a little more distinct from the initial idea.
+## Overview
 
-The project was recreated in order to improve my knowledge in **modularization** and **clean architecture**, with a project divided into layers separated by different modules.
+**ComposeChatKit** is a fully functional Android chat application built with **Kotlin**, **Jetpack Compose**, and modern Android architecture principles.  
+The app features **real-time messaging**, **offline support**, and a **serverless backend** integrated with **AWS services** for scalable and efficient performance.
 
-## Project architecture
+> This project is based on an open-source repository, which I enhanced and implemented independently with new architecture, features, and cloud backend integration.
 
-<p align="center">
-  <img src="images/project-architecture.png" />
-</p>
+---
 
-## Structure in Firebase Firestore
+## Features
 
-- ***users/***: All registered users.
-- ***chat_messages/chatId/messages/***: Messages from users, having as **chatId** an ID generated from the two userId of the conversation.
-- ***latest_messages/userId/messages/chatId/***: Latest messages from each user.
+- Real-time chat using **WebSockets** and **REST APIs**
+- Push notifications with **Firebase Cloud Messaging (FCM)**
+- Offline sync using **WorkManager**
+- Incremental loading with **Paging 3**
+- AI-powered image validation pipeline using **AWS Lambda** and **GPT API**
+- Secure, serverless backend using:
+  - **AWS Lambda**
+  - **API Gateway**
+  - **DynamoDB**
+  - **Cognito Authentication**
+  - **IAM roles**
+- CI/CD automation with **GitHub Actions**
+- Material Design 3 UI principles and modern Android UX
 
-## App features
+---
 
-- User registration with email and password;
-- One-to-one chat;
-- List of all registered users;
-- Dark and light theme with easy user change option;
-- Quick profile view.
+## Tech Stack
 
-## Clone
+**Frontend / Android:**
+- Kotlin, Jetpack Compose
+- MVVM Architecture
+- Room Database
+- Hilt for Dependency Injection
+- Firebase (Auth, Firestore, Messaging)
+- Retrofit, Kotlin Coroutines, Kotlin Flow
 
-After cloning the repository, follow the steps of [Firebase project setup](https://firebase.google.com/docs/android/setup) and add your **google-services.json** file to the project.
+**Backend / Cloud:**
+- AWS Lambda, API Gateway, DynamoDB, Cognito, S3
+- Serverless Architecture
+- API Development
 
-## Explanation of project modules and layers
+**CI/CD & DevOps:**
+- GitHub Actions
+- Google Play Console (App Signing & Release Management)
 
-### - app
+---
 
-Android module. It represents the layer popularly known as "presentation", which contains all the code and logic related to the user interface, which is made using **Jetpack Compose**.
+## Screenshots
 
-- Dependency with other modules: *common, domain and data*. (**Important note**: The inclusion of the data module in the *build.gradle.kts* is for dependency injection only, as it is not possible to access the repository implementation classes without including the data layer. *The data layer is not accessed directly by the presentation layer. For this, the use cases of the domain layer are used.*)
+*(Add screenshots of your app here for visual impact)*
 
-### - domain
+---
 
-Common Kotlin module, no dependencies with Android.
-Represents the app's business rules. Contains all the use cases responsible for CRUD and data validation, in addition to the repository interfaces.
+## How to Run Locally
 
-- Dependency with other modules: *commom*.
+1. Clone the repository:
 
-### - data
-
-Android module. Represents the app's data layer, used to get/save both remote and local data. Contains the domain layer repository implementations.
-
-- Dependency with other modules: *common and domain*.
-
-### - common
-
-Common Kotlin module, no dependencies with Android.
-Contains some useful classes that will be used in all other layers, like preference constants and exceptions.
-
-- It has no dependency with other modules.
-
-## Push notifications
-
-The old version of this project has the function of push notifications when receiving new messages, but this functionality is not present in the current project.
-
-## Unit tests
-
-The project has some unit tests of the validation use cases, which can be accessed in the **domain** module.
-
-## Technologies and libraries used
-
-- Firebase:
-  - [Auth](https://firebase.google.com/docs/auth): Used to authenticate users with email and password.
-  - [Firestore](https://firebase.google.com/docs/firestore): Realtime database to store user information.
-  - [Storage](https://firebase.google.com/docs/storage): Used to store users' profile pictures.
-- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android): Dependency injection.
-- [DataStore](https://developer.android.com/topic/libraries/architecture/datastore): Used for storing data such as user preferences.
-- [Accompanist](https://github.com/google/accompanist):
-  - **Navigation Animation**: Used for navigation with animation with **Navigation Compose**;
-  - **Pager and Pager-Indicators**: Used for XML ViewPager-like component.
-- [Landscapist](https://github.com/skydoves/landscapist): Used for image loading.
+```bash
+git clone https://github.com/adityasingh0614/ComposeChatKit.git
